@@ -1,0 +1,11 @@
+.DescribtionText{
+    display: flex;
+    flex-direction: row;
+}
+@media screen and (max-width:600px) {
+    .DescribtionText{
+        display: flex;
+        flex-direction:column ;
+        align-items: center;
+    }
+}

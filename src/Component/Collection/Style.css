@@ -1,0 +1,10 @@
+.Cards{
+    width: 17rem;
+    margin: 1rem;
+}
+.Collection{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: 2rem;
+}

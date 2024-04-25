@@ -1,0 +1,14 @@
+
+.container {
+  padding-top: 50px;
+}
+
+.embed-responsive-16by9 {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.embed-responsive-16by9 iframe {
+  border: none;
+  border-radius: 10px;
+}

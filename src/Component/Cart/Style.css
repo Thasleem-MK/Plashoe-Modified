@@ -1,0 +1,16 @@
+.Buttons {
+  height: 2rem;
+  width: 1rem;
+  display: inline;
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+}
+
+@media (min-width: 1025px) {
+  .h-custom {
+    height: 100vh !important;
+  }
+}
+
+
