@@ -86,6 +86,7 @@ function ShowProducts() {
     if (Object.values(newProduct).every((value) => value !== "")) {
       setProductData((prevData) => [...prevData, newProduct]);
       setAddingProduct(false);
+      
     } else {
       alert("Please complete all fields");
     }
