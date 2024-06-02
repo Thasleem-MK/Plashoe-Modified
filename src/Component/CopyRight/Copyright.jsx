@@ -1,15 +1,15 @@
 import React from "react";
 
-function Copyrightfooter() {
+function Copyright() {
   return (
-    <div className="col-12">
-      {/* <div className="col-12 d-flex p-4 bg-secondary ">
-        <div className="col-12 text-white d-flex flex-column">
+    <div className="w-full">
+      <div className="w-full flex p-3 bg-gray-700">
+        <div className="w-full text-white flex flex-col text-center md:text-left">
           © 2024 Recycled Shoe Store. Powered by Recycled Shoe Store.
         </div>
-      </div> */}
+      </div>
     </div>
   );
 }
 
-export default Copyrightfooter;
+export default Copyright;

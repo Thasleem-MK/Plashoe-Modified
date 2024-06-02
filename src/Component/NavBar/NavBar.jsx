@@ -57,9 +57,6 @@ function NavBar() {
                 <Nav.Link onClick={() => Navigate("/sale")}>SALE</Nav.Link>
               </div>
               <div className="NavRight">
-                <Nav.Link onClick={() => Navigate("/story")}>
-                  OUR STORY
-                </Nav.Link>
                 <Nav.Link onClick={() => Navigate("/contact")}>
                   CONTACT
                 </Nav.Link>

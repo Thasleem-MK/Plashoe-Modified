@@ -7,7 +7,6 @@ import Women from "./Women/women";
 import Collection from "./Collection/Collection";
 import LookBook from "./LookBook/LookBook";
 import Sale from "./Sale/Sale";
-import OurStory from "./OurStory/OurStory";
 import Contact from "./Contact/Contact";
 import Cart from "./Cart/Cart";
 import Profile from "./Profile/Profile";
@@ -67,7 +66,6 @@ function Main() {
               <Route path="/collection" element={<Collection />} />
               <Route path="/lookbook" element={<LookBook />} />
               <Route path="/sale" element={<Sale />} />
-              <Route path="/story" element={<OurStory />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/profile" element={<Profile />} />
