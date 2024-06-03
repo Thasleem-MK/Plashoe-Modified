@@ -28,6 +28,7 @@ function Register() {
     })
   );
   const Submit = async () => {
+    console.log("SUBMIT",formData);
     await Axios
       .post("/users/register", formData, {
         headers: {
