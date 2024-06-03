@@ -36,19 +36,21 @@ function Register() {
         },
       })
       .then((result) => {
-        if (result.data.status === "Success") {
-          toast.success(result.data.message);
-          Navigate("/login");
-        } else {
-          toast.error(result.data.message);
-        }
+        console.log(result);
+        // if (result.data.status === "Success") {
+        //   toast.success(result.data.message);
+        //   Navigate("/login");
+        // } else {
+        //   toast.error(result.data.message);
+        // }
       })
       .catch((error) => {
-        if (error.response.data.message) {
-          toast.error(error.response.data.message);
-        } else {
-          toast.error(error.message);
-        }
+        console.log(error);
+        // if (error.response.data.message) {
+        //   toast.error(error.response.data.message);
+        // } else {
+        //   toast.error(error.message);
+        // }
       });
   };
 
