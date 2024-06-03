@@ -11,7 +11,7 @@ function Women() {
   const [product, setProduct] = useState([]);
 
   useEffect(() => {
-    Axios.get(`http://localhost:7000/api/users/products/category/Women`)
+    Axios.get(`/users/products/category/Women`)
       .then((result) => setProduct(result.data))
       .catch((error) => {
         console.log(error);

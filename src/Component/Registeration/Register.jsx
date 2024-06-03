@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {Axios} from '../../Axios';
+import { Axios } from "../../Axios";
 import { Link, useNavigate } from "react-router-dom";
 import TitleHook from "../Hook/TitleHook";
 import { toast } from "react-toastify";
@@ -16,6 +16,7 @@ function Register() {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
+    console.log(value);
     setInput({ ...input, [name]: value });
   };
   const formData = new FormData();
@@ -28,29 +29,28 @@ function Register() {
     })
   );
   const Submit = async () => {
-    console.log("SUBMIT",formData);
-    await Axios
-      .post("/users/register", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
+    console.log("SUBMIT", input);
+    await Axios.post("/users/register", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    })
       .then((result) => {
         console.log(result);
-        // if (result.data.status === "Success") {
-        //   toast.success(result.data.message);
-        //   Navigate("/login");
-        // } else {
-        //   toast.error(result.data.message);
-        // }
+        if (result?.data?.status === "Success") {
+          toast.success(result?.data?.message);
+          Navigate("/login");
+        } else {
+          toast.error(result?.data?.message);
+        }
       })
       .catch((error) => {
         console.log(error);
-        // if (error.response.data.message) {
-        //   toast.error(error.response.data.message);
-        // } else {
-        //   toast.error(error.message);
-        // }
+        if (error?.response?.data?.message) {
+          toast.error(error?.response?.data?.message);
+        } else {
+          toast.error(error?.message);
+        }
       });
   };
 
