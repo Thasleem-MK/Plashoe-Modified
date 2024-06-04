@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 function Login() {
   TitleHook("Login");
   const [showPassword, setShowPassword] = useState(false);
-  const [user, setUser] = useState({ userId: "", password: "" });
+  const [user, setUser] = useState({ email: "", password: "" });
   const navigate = useNavigate();
 
   const loginSubmit = async () => {
@@ -43,10 +43,10 @@ function Login() {
             id="form_userId"
             type="text"
             name="userId"
-            placeholder="Username or Email"
+            placeholder="Email"
             value={user.userId}
             onChange={(event) => {
-              setUser({ ...user, userId: event.target.value });
+              setUser({ ...user, email: event.target.value });
             }}
             className="w-full px-4 py-2 border-b-2 border-gray-300 focus:outline-none focus:border-rose-500 bg-transparent"
           />
