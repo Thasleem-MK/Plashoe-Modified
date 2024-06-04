@@ -22,9 +22,9 @@ function Login() {
       .catch((error) => {
         if (error.message || error.response.data) {
           if (error.response.data.message) {
-            alert(error.response.data.message);
+            toast.error(error.response.data.message);
           } else {
-            alert(error.message);
+            toast.error(error.message);
           }
         }
       });
