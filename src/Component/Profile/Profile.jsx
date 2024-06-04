@@ -18,6 +18,7 @@ export default function Profile() {
         const result = await Axios.get("/users/profile", {
           withCredentials: true,
         });
+        console.log(result);
         setUser(result.data.data);
       } catch (error) {
         console.error(error);
