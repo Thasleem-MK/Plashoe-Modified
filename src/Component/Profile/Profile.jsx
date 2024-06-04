@@ -21,7 +21,6 @@ export default function Profile() {
         setUser(result.data.data);
       } catch (error) {
         console.error(error);
-        navigate("/login");
       }
     };
     fetchData();
