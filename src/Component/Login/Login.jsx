@@ -21,7 +21,7 @@ function Login() {
       })
       .catch((error) => {
         if (error.message || error.response.data) {
-          if (error.response.data.message) {
+          if (error?.response?.data?.message) {
             toast.error(error.response.data.message);
           } else {
             toast.error(error.message);
