@@ -25,14 +25,14 @@ export default function Profile() {
       }
     };
     fetchData();
-  }, [navigate]);
+  }, []);
 
-  const logout = () => {
-    document.cookie = "token=; Max-Age=-99999999;";
-    document.cookie = "refreshToken=; Max-Age=-99999999;";
-    navigate("/");
-    window.location.reload();
-  };
+  // const logout = () => {
+  //   document.cookie = "token=; Max-Age=-99999999;";
+  //   document.cookie = "refreshToken=; Max-Age=-99999999;";
+  //   navigate("/");
+  //   window.location.reload();
+  // };
 
   return (
     <div className="flex flex-col md:flex-row min-h-screen bg-gray-100">
