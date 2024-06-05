@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import TitleHook from "../Hook/TitleHook";
 import { Axios } from "../../Axios";
 
 export default function Cart() {
-  TitleHook("Cart");
   const [cart, setCart] = useState([]);
   const [state, setState] = useState(false);
   const navigate = useNavigate();
@@ -18,7 +16,7 @@ export default function Cart() {
         navigate("/login");
         console.log(error);
       });
-  }, [state]);
+  }, []);
 
   const PurchaseUpdater = async (element, value) => {
     if (value === -1) {
@@ -26,23 +24,29 @@ export default function Cart() {
         "/users/cart",
         { productId: element.product._id },
         { withCredentials: true }
-      );
+      ).then((result) => {
+        element.quantity = result.data;
+      });
     } else {
       await Axios.post(
         "/users/cart",
         { productId: element.product._id },
         { withCredentials: true }
-      );
+      ).then((result) => {
+        element.quantity = result.data;
+      });
     }
     setState(!state);
   };
 
-  const deleteItem = async (element) => {
+  const deleteItem = async (element, index, arr) => {
     const config = {
       data: { productId: element.product._id },
       withCredentials: true,
     };
-    await Axios.delete(`/users/cart`, config);
+    await Axios.delete(`/users/cart`, config).then(() => {
+      arr.splice(index, 1);
+    });
     setState(!state);
   };
 
@@ -71,7 +75,7 @@ export default function Cart() {
       </div>
       {cart.length > 0 ? (
         <>
-          {cart.map((element, index) => (
+          {cart.map((element, index, arr) => (
             <div
               key={index}
               className="mb-4 p-4 border rounded-lg shadow-sm flex justify-between items-center"
@@ -114,7 +118,7 @@ export default function Cart() {
                 </div>
                 <button
                   className="btn btn-danger rounded-full px-2 py-1"
-                  onClick={() => deleteItem(element)}
+                  onClick={() => deleteItem(element, index, arr)}
                 >
                   <i className="fas fa-trash-alt"></i> Remove
                 </button>

@@ -1,15 +1,9 @@
-import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import "bootstrap/dist/css/bootstrap.min.css";
 import {
   Menu,
   ShoppingCart,
   Person,
   SupervisorAccount,
 } from "@mui/icons-material";
-import "./Style.css";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { Context } from "../UseContext/Context";
@@ -21,92 +15,112 @@ function NavBar() {
   const [login, setLogin] = useState(Cookies.get("token"));
   const [cartlength, setCartlength] = useState(0);
   const Navigate = useNavigate();
-  useEffect(() => {
-    axios
-      .get("http://localhost:7000/api/users/cart", { withCredentials: true })
-      .then((result) => {
-        setCartlength(result?.data?.length);
-      })
-      .catch((err) => console.log(err));
-  }, [cart]);
+
+  // useEffect(() => {
+  //   axios
+  //     .get("http://localhost:7000/api/users/cart", { withCredentials: true })
+  //     .then((result) => {
+  //       setCartlength(result?.data?.length);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, [cart]);
+
   return (
-    <div>
-      <Navbar expand="lg" className="bg-body-tertiary">
-        <Container fluid>
-          <Navbar.Brand className="Plashoe" onClick={() => Navigate("/")}>
-            PLASHOE
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="navbarScroll">
-            <Menu />
-          </Navbar.Toggle>
-          <Navbar.Collapse id="navbarScroll">
-            <Nav
-              className="me-auto my-2 my-lg-0 NavBar"
-              style={{ maxHeight: "100px", width: "100%" }}
-              navbarScroll
+    <div className="top-0 w-full">
+      <nav className="bg-gray-200">
+        <div className="container mx-auto px-4 py-3 flex flex-wrap items-center justify-between">
+          <div className="flex items-center">
+            <span
+              className="text-xl font-bold cursor-pointer pl-4"
+              onClick={() => Navigate("/")}
             >
-              <div className="NavLeft">
-                <Nav.Link onClick={() => Navigate("/men")}>MEN</Nav.Link>
-                <Nav.Link onClick={() => Navigate("/women")}>WOMEN</Nav.Link>
-                <Nav.Link onClick={() => Navigate("/collection")}>
+              PLASHOE
+            </span>
+          </div>
+          <div className="flex lg:hidden">
+            <Menu />
+          </div>
+          <div
+            className="hidden lg:flex lg:items-center lg:w-auto lg:space-x-8 w-full"
+            id="navbarScroll"
+          >
+            <div className="flex flex-col lg:flex-row lg:items-center lg:space-x-8 w-full justify-between">
+              <div className="flex flex-col lg:flex-row lg:items-center lg:space-x-8">
+                <span
+                  className="cursor-pointer"
+                  onClick={() => Navigate("/men")}
+                >
+                  MEN
+                </span>
+                <span
+                  className="cursor-pointer"
+                  onClick={() => Navigate("/women")}
+                >
+                  WOMEN
+                </span>
+                <span
+                  className="cursor-pointer"
+                  onClick={() => Navigate("/collection")}
+                >
                   COLLECTION
-                </Nav.Link>
-                <Nav.Link onClick={() => Navigate("/lookbook")}>
+                </span>
+                <span
+                  className="cursor-pointer"
+                  onClick={() => Navigate("/lookbook")}
+                >
                   LOOKBOOK
-                </Nav.Link>
-                <Nav.Link onClick={() => Navigate("/sale")}>SALE</Nav.Link>
+                </span>
+                <span
+                  className="cursor-pointer"
+                  onClick={() => Navigate("/sale")}
+                >
+                  SALE
+                </span>
               </div>
-              <div className="NavRight">
-                <Nav.Link onClick={() => Navigate("/contact")}>
+              <div className="flex flex-col lg:flex-row lg:items-center lg:space-x-8">
+                <span
+                  className="cursor-pointer"
+                  onClick={() => Navigate("/contact")}
+                >
                   CONTACT
-                </Nav.Link>
-                <Nav.Link
-                  style={{ position: "relative" }}
-                  title="View Cart"
+                </span>
+                {/* <div
+                  className="relative cursor-pointer"
                   onClick={() =>
                     login ? Navigate("/cart") : Navigate("/login")
                   }
                 >
                   <ShoppingCart />
-                  <span className="CartsCount ms-auto mb-auto">
+                  <span className="absolute top-0 left-3 h-3 w-3 text-xs text-center bg-gray-700 text-white rounded-full">
                     {cartlength}
                   </span>
-                </Nav.Link>
-                <Nav.Link
-                  title="View Profile"
+                </div> */}
+                <span
+                  className="cursor-pointer"
                   onClick={() => Navigate("/profile")}
                 >
                   <Person />
-                </Nav.Link>
-
-                <Form className="d-flex">
-                  <Form.Control
+                </span>
+                <div className="flex">
+                  <input
                     type="search"
                     placeholder="Search"
-                    className="me-2"
-                    aria-label="Search"
+                    className="px-4 py-2 border rounded-lg"
                     onClick={() => Navigate("/collection")}
-                    onChange={(event) => {
-                      setSearch(event.target.value);
-                    }}
+                    onChange={(event) => setSearch(event.target.value)}
                   />
-                </Form>
-                <Nav.Link
-                  title="Admin Login"
-                  onClick={() => {
-                    // document.cookie = "token=; Max-Age=-99999999;";
-                    // document.cookie = "refreshToken=; Max-Age=-99999999;";
-                    Navigate("/admin/home");
-                    // window.location.reload();
-                  }}
+                </div>
+                <span
+                  className="cursor-pointer"
+                  onClick={() => Navigate("/admin/home")}
                 >
                   <SupervisorAccount />
-                </Nav.Link>
+                </span>
               </div>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+            </div>
+          </div>
+        </div>
+      </nav>
       <div>
         <Outlet />
       </div>

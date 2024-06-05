@@ -5,6 +5,7 @@ import { Axios } from "../../Axios";
 import Information from "./Information";
 import Orders from "./Orders";
 import Cart from "../Cart/Cart";
+import { toast } from "react-toastify";
 
 export default function Profile() {
   TitleHook("Profile");
@@ -17,10 +18,11 @@ export default function Profile() {
       try {
         const result = await Axios.get("/users/profile", {
           withCredentials: true,
-        });
-        console.log(result);
+        })
         setUser(result.data.data);
       } catch (error) {
+        navigate('/login')
+        toast.error("Something went wrong!, Login please");
         console.error(error);
       }
     };
