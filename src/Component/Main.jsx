@@ -24,6 +24,7 @@ import ShowProducts from "./Admin/Products/ShowProducts";
 import EachPerson from "./Admin/UsersDetails/EachPerson";
 import Payment from "./Payment/Payment";
 import PaymentCancel from "./Payment/PaymentCancel";
+import BaseRoute from "./NavBar/BaseRoute";
 
 function Main() {
   const [login, setLogin] = useState(false); 
@@ -59,7 +60,7 @@ function Main() {
       >
         <div>
           <Routes>
-            <Route path="/" element={<NavBar />}>
+            <Route path="/" element={<BaseRoute />}>
               <Route path="/" element={<Home />} />
               <Route path="/men" element={<Men />} />
               <Route path="/women" element={<Women />} />
